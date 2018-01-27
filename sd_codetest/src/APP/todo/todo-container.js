@@ -4,6 +4,7 @@ import React from 'react';
 import { TodoList } from './todo-list';
 import { AddTodo } from './add-todo';
 import { TodoModel } from './model';
+import { RobotModel } from './robot-model.js'
 
 // because we will modified the state so we need to extend the react.component
 export class TodoContainer extends React.Component {
@@ -17,6 +18,7 @@ export class TodoContainer extends React.Component {
         this.onAddTodo = this.onAddTodo.bind(this);
         this.onRemoveTodo = this.onRemoveTodo.bind(this);
         this.onDoneTodo = this.onDoneTodo.bind(this);
+        this.startChating = this.startChating.bind(this);
     }
     //componentDidMount() {
      //   axios.get('https://jr-001-pawpatrol-course-api.herokuapp.com/api/Todos').then(({data}) => {
@@ -34,15 +36,16 @@ export class TodoContainer extends React.Component {
     // delete the value from the list
     // filter means that get the required value out of the list
     onRemoveTodo(aItem) {
-        this.state.type == "finish" ? 
+        this.state.type == "finish" ?
         this.setState({
-            todoItems: this.state.todoItems.filter((value) => value !== aItem)
+            todoItems: this.state.todoItems.filter((value) => value !== aItem),
+            type: "type"
         })
-     : 
+     :
         this.setState({
             todoItems: this.state.todoItems
         });
-    
+
 }
 
     // change the argument saved in the model
@@ -58,6 +61,14 @@ export class TodoContainer extends React.Component {
             todoItems: newState
         });
     }
+
+    startChating(aItem){
+        if (this.state.type == "start"){
+            this.setState({
+                type: "question"
+            });
+        }
+    }
     // the slash is another method of writing html tags
     render() {
         return (
@@ -69,6 +80,8 @@ export class TodoContainer extends React.Component {
                     onDoneTodo={this.onDoneTodo}
                 />
                 <AddTodo onAddTodo={this.onAddTodo} />
+                <RobotModel startChating = {this.startChating} />
+
             </div>
         );
     }

@@ -33,5 +33,6 @@ export function TodoList(props) {
 TodoList.propTypes = {
     items: PropType.array.isRequired,
     onRemoveTodo: PropType.func.isRequired,
-    onDoneTodo: PropType.func.isRequired
+    onDoneTodo: PropType.func.isRequired,
+    startChating: PropType.func.isRequired
 }

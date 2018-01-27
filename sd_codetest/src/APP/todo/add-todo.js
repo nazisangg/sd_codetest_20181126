@@ -27,7 +27,7 @@ export class AddTodo extends React.Component {
         return (
             <form>
                 <label>
-                    Name:
+                    TextField:
                     <input type="text" name="name" value={this.state.name} onChange={(e) => this.onValueChange(e)} />
                 </label>
                 <button onClick={handleClick}>Add</button>
