@@ -7,7 +7,7 @@ export class TodoModel {
         this.id = TodoModel.generaterId;
         this.name = name;
         this.done = done;
-        this.type = "type"
+        this.type = ""
     }
 }
 

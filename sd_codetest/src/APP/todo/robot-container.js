@@ -1,6 +1,8 @@
 import React from 'react';
 import { RobotModel } from './robot-model.js'
 
+e
+
 
 robotChanged(){
  var answer = "";

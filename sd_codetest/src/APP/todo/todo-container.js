@@ -73,14 +73,14 @@ export class TodoContainer extends React.Component {
     render() {
         return (
             <div>
-                <h1>Todo List</h1>
+                <h1>Welcome to Chat Bot Room</h1>
                 <TodoList
                     items={this.state.todoItems}
                     onRemoveTodo={this.onRemoveTodo}
                     onDoneTodo={this.onDoneTodo}
                 />
-                <AddTodo onAddTodo={this.onAddTodo} />
-                <RobotModel startChating = {this.startChating} />
+                
+                <RobotModel  startChating= {this.startChating}/>
 
             </div>
         );
