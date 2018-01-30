@@ -7,10 +7,12 @@ export class RobotModel extends React.Component{
 	constructor(props) {
 			super(props);
 			this.state = {
+					name: '',
 					textvalue: '',
 					type: 'init'
 			};
-			this.robotReplicated = this.robotReplicated.bind(this);
+			this.robotListened = this.robotListened.bind(this);
+			this.resetShell = this.resetShell.bind(this);
 	}
 
 	textFieldChanged(event){
@@ -18,8 +20,7 @@ export class RobotModel extends React.Component{
 		const value = target.value;
 		const textvalue = target.textvalue;
 		this.setState({
-				textvalue: value,
-				type:"init"
+				textvalue: value
 		})
 }
 
@@ -27,7 +28,7 @@ export class RobotModel extends React.Component{
 	 robotChanged(){
 		var answer = "";
 		if(this.state.type == "start"){
-			answer = <div>Hello {this.state.textvalue}, Welcome to the Government Service! How can I help you today</div>;
+			answer = <div>Hello {this.state.name}, Welcome to the Government Service! How can I help you today</div>;
 		}else if(this.state.type == "question"){
 			answer = <div>Sure, here is the link you are after <a href = "http://govt.org.au/rates">Government Service</a></div>;
 		}else if(this.state.type == "init"){
@@ -40,21 +41,33 @@ export class RobotModel extends React.Component{
 		return answer
 	}
 
-	robotListened(){
+	robotListened(name){
 		var answer = "";
 		if(this.state.type == "init"){
+			this.setState({
+				name: name,
+				type: "start"
+			})
 			answer = "start";
 		}
 		return answer
 	}
 
-	robotReplicated(aItem){
-		if(aItem == "duplicate"){
-			this.setState({
-				type: aItem
+	questionAsked(){
+		if(this.state.type == 'start'){
+			this.setState(
+			{
+				type: 'question'
 			})
-
 		}
+		return 'question'
+	}
+
+
+	resetShell(){
+			this.setState({
+				type: 'init'
+			})
 	}
 
 
@@ -63,7 +76,7 @@ render(){
 	const handleClick = (e) => {
 			e.preventDefault();
 			this.setState({
-				type: this.robotListened()
+				type: this.questionAsked()
 
 		});
 
@@ -71,19 +84,14 @@ render(){
 	const robotAnswer = this.robotChanged()
 	return (
 		<p>
-			<RobotRegist></RobotRegist>
-			<form>
-					<label>
-							Register:
-							<input type="text" name="textvalue" value={this.state.name} onChange={(e) => this.textFieldChanged(e)} />
-					</label>
-					<button onClick={handleClick}>submit</button>
-			</form>
-
+			<RobotRegist 
+			robotListened = {this.robotListened}
+			resetShell = {this.resetShell}
+			></RobotRegist>
 				<form>
 						<label>
 								TextField:
-								<input type="text" name="textvalue" value={this.state.name} onChange={(e) => this.textFieldChanged(e)} />
+								<input type="text" name="textvalue" value={this.state.textvalue} onChange={(e) => this.textFieldChanged(e)} />
 						</label>
 						<button onClick={handleClick}>submit</button>
 				</form>

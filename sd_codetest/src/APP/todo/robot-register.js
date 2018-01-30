@@ -2,6 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { TodoModel } from './model';
 
+
 export class RobotRegist extends React.Component{
 
 	constructor(props) {
@@ -55,10 +56,13 @@ export class RobotRegist extends React.Component{
             e.preventDefault();
             this.addNewUser();
             this.setState({name: ''});
+            this.props.robotListened(this.state.name)
+
         };
 
         const handleDelete = (e) => {
         	e.preventDefault();
+        	this.props.resetShell();
         	this.removeUser();
         };
 
