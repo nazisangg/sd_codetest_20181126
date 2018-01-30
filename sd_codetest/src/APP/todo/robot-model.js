@@ -1,6 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types';
 import {RobotRegist} from './robot-register.js'
+import {SimpleSlider} from './slides.js'
 
 export class RobotModel extends React.Component{
 
@@ -96,6 +97,11 @@ render(){
 						<button onClick={handleClick}>submit</button>
 				</form>
             Robot: {robotAnswer}
+            <br />
+            <br />
+            <br />
+            <br />
+            <SimpleSlider />
         </p>
     );
 	}

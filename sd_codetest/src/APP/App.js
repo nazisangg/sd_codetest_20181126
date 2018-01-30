@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import logo from '../assets/logo.svg';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Route,

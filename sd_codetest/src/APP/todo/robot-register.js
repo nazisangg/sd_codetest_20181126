@@ -1,6 +1,8 @@
 import React from 'react';
 import PropType from 'prop-types';
 import { TodoModel } from './model';
+import {RobotContainer} from './robot-container.js'
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 
 export class RobotRegist extends React.Component{
@@ -72,8 +74,8 @@ export class RobotRegist extends React.Component{
                     TextField:
                     <input type="text" name="name" value={this.state.name} onChange={(e) => this.onValueChange(e)} />
                 </label>
-                <button onClick={handleClick}>Add</button>
-                <button onClick={handleDelete}>delete</button>
+                <button bsStyle="primary" onClick={handleClick}>Add</button>
+                <button bsStyle="primary" onClick={handleDelete}>delete</button>
                 <p>{this.state.answer}</p>
             </form>
         );
